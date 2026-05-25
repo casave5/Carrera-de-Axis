@@ -102,11 +102,6 @@
       </svg>
     );
 
-    const FolderOpen = ({ className = "w-4 h-4" }) => (
-      <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/>
-      </svg>
-    );
 
     const Image = ({ className = "w-4 h-4" }) => (
       <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -809,7 +804,6 @@
       // Modal / Help panel states
       const [isCodexOpen, setIsCodexOpen] = useState(false);
       const [codexTab, setCodexTab] = useState('gallery'); // 'gallery' | 'verifier'
-      const [isHelpOpen, setIsHelpOpen] = useState(false);
       const [filterClass, setFilterClass] = useState('all');
       const [filterType, setFilterType] = useState('all');
 
@@ -1103,13 +1097,6 @@
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <button
-                onClick={() => setIsHelpOpen(true)}
-                className="px-3 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all text-emerald-400"
-              >
-                <FolderOpen className="w-4 h-4" /> Configurar Carpeta PNG
-              </button>
-
               <button
                 onClick={() => setIsCodexOpen(true)}
                 className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all active:scale-95 text-white shadow-md shadow-indigo-950/40"
@@ -1837,65 +1824,6 @@
                   </>
                 )}
 
-              </div>
-            </div>
-          )}
-
-
-          {/* IMAGES DIRECTORY CONFIGURATION SETUP MODAL */}
-          {isHelpOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm animate-fade-in">
-              <div className="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-2xl p-6 shadow-2xl flex flex-col gap-4 animate-fade-in text-slate-300">
-                <div className="flex justify-between items-center border-b border-slate-800 pb-3">
-                  <h3 className="text-lg font-black text-white flex items-center gap-2">
-                    <FolderOpen className="text-emerald-400 w-5 h-5 animate-pulse" /> Configurar Carpeta de Imágenes PNG
-                  </h3>
-                  <button 
-                    onClick={() => setIsHelpOpen(false)}
-                    className="p-1 bg-slate-800 hover:bg-slate-700 rounded-xl text-slate-400 hover:text-white transition-all"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-
-                <p className="text-xs leading-relaxed">
-                  Para que el juego pueda cargar de manera automática las imágenes reales de Axie Infinity Classic que tienes en tu carpeta local, sigue las siguientes pautas de configuración:
-                </p>
-
-                <div className="bg-slate-950/80 p-4 border border-slate-800 rounded-xl flex flex-col gap-3 font-mono text-xs">
-                  <div>
-                    <span className="text-emerald-400 font-bold">📂 Ruta del Directorio:</span>
-                    <p className="text-slate-400 mt-1">Coloca tu carpeta de imágenes dentro de la carpeta pública de tu proyecto React:</p>
-                    <code className="block bg-slate-900 border border-slate-800 p-2 rounded mt-1 text-[11px] text-amber-400">
-                      public/assets/cards/
-                    </code>
-                  </div>
-
-                  <div>
-                    <span className="text-emerald-400 font-bold">🏷️ Nomenclatura del Archivo:</span>
-                    <p className="text-slate-400 mt-1">El juego buscará las imágenes en minúscula combinando <code className="text-amber-400">clase-parte-numero.png</code>:</p>
-                    <ul className="list-disc list-inside mt-1 flex flex-col gap-1 text-[11px] text-slate-300">
-                      <li><span className="text-blue-400">Agua Espalda 1 (Goldfish):</span> <code className="bg-slate-900 px-1 py-0.5 rounded text-amber-300">aquatic-back-02.png</code></li>
-                      <li><span className="text-blue-400">Agua Espalda 2 (Sponge):</span> <code className="bg-slate-900 px-1 py-0.5 rounded text-amber-300">aquatic-back-04.png</code></li>
-                      <li><span className="text-emerald-400">Planta Boca 1 (Serious):</span> <code className="bg-slate-900 px-1 py-0.5 rounded text-amber-300">plant-mouth-02.png</code></li>
-                      <li><span className="text-amber-400">Bestia Cola 6 (Gerbil):</span> <code className="bg-slate-900 px-1 py-0.5 rounded text-amber-300">beast-tail-12.png</code></li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <span className="text-emerald-400 font-bold">⭐ Sistema Inteligente Integrado:</span>
-                    <p className="text-slate-400 mt-1">
-                      Si hay alguna discrepancia en el nombre o falta algún archivo, el juego cargará automáticamente el <strong className="text-white">diseño vectorial dinámico</strong> que creamos anteriormente para que puedas jugar sin interrupciones ni pantallas rotas.
-                    </p>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => setIsHelpOpen(false)}
-                  className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black rounded-xl transition-all shadow text-xs uppercase"
-                >
-                  ¡Entendido, Todo Listo!
-                </button>
               </div>
             </div>
           )}
