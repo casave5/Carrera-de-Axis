@@ -451,10 +451,10 @@ const AxieClassicCard = ({ card, isFlipped, size = 'normal', borderGlow = '' }) 
   const Icon = meta.icon;
 
   const widthClass = 
-    size === 'small' ? 'w-16 h-24' : 
-    size === 'micro' ? 'w-12 h-18 md:w-14 md:h-20' : 
-    size === 'deck' ? 'w-24 h-36 sm:w-28 sm:h-42' : 
-    'w-28 h-42 md:w-34 md:h-50';
+    size === 'small' ? 'w-18 h-26' : 
+    size === 'micro' ? 'w-14 h-20 md:w-16 md:h-24' : 
+    size === 'deck' ? 'w-28 h-42 sm:w-32 sm:h-48' : 
+    'w-32 h-48 md:w-36 md:h-54';
 
   const cardBorderClass = 
     card.class === 'plant' ? 'border-emerald-500' :
@@ -1272,13 +1272,14 @@ export default function App() {
                       disabled={!!winner || !!activeTrapEffect || isShufflingMessage}
                       className="group relative focus:outline-none disabled:opacity-50"
                     >
-                      <div className="w-24 h-36 rounded-2xl bg-gradient-to-br from-slate-950 to-slate-900 border-4 border-amber-500 flex flex-col items-center justify-center shadow-2xl group-hover:scale-105 active:scale-95 transition-all">
-                        <div className="w-8 h-8 rounded-full border-2 border-amber-400 bg-slate-950 flex items-center justify-center text-amber-400 font-bold text-[10px]">
-                          AXS
-                        </div>
-                        <span className="text-amber-500 text-[8px] tracking-widest uppercase font-black mt-2 leading-none">Classic</span>
+                      <div className="w-28 h-42 rounded-2xl overflow-hidden border-4 border-amber-500 shadow-2xl group-hover:scale-105 active:scale-95 transition-all bg-slate-950">
+                        <img
+                          src="/assets/cards/reverso.jpg"
+                          alt="Reverso del mazo"
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      <div className="absolute top-1 left-1 w-24 h-36 rounded-2xl bg-slate-800/80 border border-slate-700 -z-10 transform -rotate-3" />
+                      <div className="absolute top-1 left-1 w-28 h-42 rounded-2xl bg-slate-800/80 border border-slate-700 -z-10 transform -rotate-3" />
                     </button>
                   </div>
 
