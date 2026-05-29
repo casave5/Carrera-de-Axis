@@ -454,10 +454,10 @@ const AxieClassicCard = ({ card, isFlipped, size = 'normal', borderGlow = '' }) 
   const displayName = card.name.split(' ')[0];
 
   const widthClass = 
-    size === 'small' ? 'w-18 h-26' : 
-    size === 'micro' ? 'w-14 h-20 md:w-16 md:h-24' : 
-    size === 'deck' ? 'w-28 h-42 sm:w-32 sm:h-48' : 
-    'w-32 h-48 md:w-36 md:h-54';
+    size === 'small' ? 'w-24 h-36' : 
+    size === 'micro' ? 'w-20 h-28 md:w-24 md:h-32' : 
+    size === 'deck' ? 'w-40 h-60 sm:w-48 sm:h-72' : 
+    'w-44 h-64 md:w-52 md:h-76';
 
   const cardBorderClass = 
     card.class === 'plant' ? 'border-emerald-500' :
@@ -592,7 +592,7 @@ const TrapCardVertical = ({ card, isFlipped, borderGlow = '' }) => {
   const localImagePath = `assets/cards/${card.imageName}`;
 
   return (
-    <div className={`flip-card w-11 h-16 md:w-12 md:h-18 ${isFlipped ? 'flipped' : ''} ${borderGlow}`}>
+    <div className={`flip-card w-20 h-28 md:w-24 md:h-32 ${isFlipped ? 'flipped' : ''} ${borderGlow}`}>
       <div className="flip-card-inner w-full h-full relative">
         
         {/* Back of Trap Card */}
@@ -1291,14 +1291,14 @@ export default function App() {
                       disabled={!!winner || !!activeTrapEffect || isShufflingMessage}
                       className="group relative focus:outline-none disabled:opacity-50"
                     >
-                      <div className="w-28 h-42 sm:w-32 sm:h-48 rounded-2xl overflow-hidden border-4 border-amber-500 shadow-2xl group-hover:scale-105 active:scale-95 transition-all bg-slate-950">
+                      <div className="w-28 h-42 rounded-2xl overflow-hidden border-4 border-amber-500 shadow-2xl group-hover:scale-105 active:scale-95 transition-all bg-slate-950">
                         <img
                           src="assets/cards/reverso.jpg"
                           alt="Reverso del mazo"
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <div className="absolute top-1 left-1 w-28 h-42 sm:w-32 sm:h-48 rounded-2xl bg-slate-800/80 border border-slate-700 -z-10 transform -rotate-3" />
+                      <div className="absolute top-1 left-1 w-28 h-42 rounded-2xl bg-slate-800/80 border border-slate-700 -z-10 transform -rotate-3" />
                     </button>
                   </div>
 
@@ -1315,7 +1315,7 @@ export default function App() {
                         <AxieClassicCard card={lastDrawnCard} isFlipped={true} size="deck" />
                       </div>
                     ) : (
-                      <div className="w-24 h-36 rounded-2xl bg-slate-950 border-2 border-slate-800 border-dashed flex items-center justify-center">
+                      <div className="w-40 h-60 sm:w-48 sm:h-72 rounded-2xl bg-slate-950 border-2 border-slate-800 border-dashed flex items-center justify-center">
                         <span className="text-[10px] text-slate-600 font-semibold text-center px-2">Roba del Mazo</span>
                       </div>
                     )}
