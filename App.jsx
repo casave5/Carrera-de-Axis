@@ -450,6 +450,8 @@ const AxieClassicCard = ({ card, isFlipped, size = 'normal', borderGlow = '' }) 
   const meta = CLASSE_META[card.class];
   const Icon = meta.icon;
 
+  const localImagePath = `assets/cards/${card.imageName}`;
+
   const widthClass = 
     size === 'small' ? 'w-18 h-26' : 
     size === 'micro' ? 'w-14 h-20 md:w-16 md:h-24' : 
@@ -471,8 +473,6 @@ const AxieClassicCard = ({ card, isFlipped, size = 'normal', borderGlow = '' }) 
     card.class === 'bird' ? 'bg-pink-950/80' :
     card.class === 'reptile' ? 'bg-purple-950/80' :
     'bg-red-950/80';
-
-  const localImagePath = `/assets/cards/${card.imageName}`;
 
   return (
     <div className={`flip-card ${widthClass} ${isFlipped ? 'flipped' : ''} ${borderGlow}`}>
@@ -570,7 +570,7 @@ const TrapCardVertical = ({ card, isFlipped, borderGlow = '' }) => {
     card.class === 'reptile' ? 'border-purple-500' :
     'border-red-500';
 
-  const localImagePath = `/assets/cards/${card.imageName}`;
+  const localImagePath = `assets/cards/${card.imageName}`;
 
   return (
     <div className={`flip-card w-11 h-16 md:w-12 md:h-18 ${isFlipped ? 'flipped' : ''} ${borderGlow}`}>
@@ -1274,7 +1274,7 @@ export default function App() {
                     >
                       <div className="w-28 h-42 rounded-2xl overflow-hidden border-4 border-amber-500 shadow-2xl group-hover:scale-105 active:scale-95 transition-all bg-slate-950">
                         <img
-                          src="/assets/cards/reverso.jpg"
+                          src="assets/cards/reverso.jpg"
                           alt="Reverso del mazo"
                           className="w-full h-full object-cover"
                         />
@@ -1365,7 +1365,7 @@ export default function App() {
                   <h4 className="font-bold text-slate-200">¡Victoria en la Pista!</h4>
                   {winner && (
                     <p className="text-xs text-slate-400 mt-1">
-                      El gran ganador del ascenso vertical es el Axie de clase <strong className={CLASSE_META[winner].text}>{CLASSE_META[winner].name}</strong>.
+                      El gran ganador de la carrera de Axie <strong className={CLASSE_META[winner].text}>{CLASSE_META[winner].name}</strong>.
                     </p>
                   )}
                 </div>
