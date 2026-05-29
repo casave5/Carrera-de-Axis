@@ -451,6 +451,7 @@ const AxieClassicCard = ({ card, isFlipped, size = 'normal', borderGlow = '' }) 
   const Icon = meta.icon;
 
   const localImagePath = `assets/cards/${card.imageName}`;
+  const displayName = card.name.split(' ')[0];
 
   const widthClass = 
     size === 'small' ? 'w-18 h-26' : 
@@ -495,8 +496,26 @@ const AxieClassicCard = ({ card, isFlipped, size = 'normal', borderGlow = '' }) 
                 src={localImagePath} 
                 onError={() => setImageError(true)} 
                 alt={card.name} 
-                className="w-full h-full object-contain pointer-events-none"
+                className="w-full h-full object-cover pointer-events-none"
               />
+
+              <div className="absolute left-0 bottom-20 flex flex-col gap-1 text-[10px] font-black uppercase tracking-[0.15em] text-white">
+                {card.atk > 0 && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-red-600/95 px-2 py-0.5">
+                    🗡️ {card.atk}
+                  </span>
+                )}
+                {card.def > 0 && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-600/95 px-2 py-0.5">
+                    🛡️ {card.def}
+                  </span>
+                )}
+              </div>
+
+              <div className="absolute left-1/2 bottom-14 -translate-x-1/2 text-center text-[12px] font-black uppercase tracking-[0.35em] text-slate-950" style={{ textShadow: '0 1px 3px rgba(255,255,255,0.75)' }}>
+                {displayName}
+              </div>
+
               {/* Overlapping debugging badge to confirm file-based loading is active */}
               <div className="absolute top-1 right-1 bg-emerald-500/80 text-slate-950 text-[6px] font-bold px-1 rounded-sm shadow">
                 LOCAL PNG
@@ -1272,14 +1291,14 @@ export default function App() {
                       disabled={!!winner || !!activeTrapEffect || isShufflingMessage}
                       className="group relative focus:outline-none disabled:opacity-50"
                     >
-                      <div className="w-28 h-42 rounded-2xl overflow-hidden border-4 border-amber-500 shadow-2xl group-hover:scale-105 active:scale-95 transition-all bg-slate-950">
+                      <div className="w-28 h-42 sm:w-32 sm:h-48 rounded-2xl overflow-hidden border-4 border-amber-500 shadow-2xl group-hover:scale-105 active:scale-95 transition-all bg-slate-950">
                         <img
                           src="assets/cards/reverso.jpg"
                           alt="Reverso del mazo"
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <div className="absolute top-1 left-1 w-28 h-42 rounded-2xl bg-slate-800/80 border border-slate-700 -z-10 transform -rotate-3" />
+                      <div className="absolute top-1 left-1 w-28 h-42 sm:w-32 sm:h-48 rounded-2xl bg-slate-800/80 border border-slate-700 -z-10 transform -rotate-3" />
                     </button>
                   </div>
 
@@ -1365,7 +1384,7 @@ export default function App() {
                   <h4 className="font-bold text-slate-200">¡Victoria en la Pista!</h4>
                   {winner && (
                     <p className="text-xs text-slate-400 mt-1">
-                      El gran ganador de la carrera de Axie <strong className={CLASSE_META[winner].text}>{CLASSE_META[winner].name}</strong>.
+                      El gran ganador de la carrera de Axie es: <strong className={CLASSE_META[winner].text}>{CLASSE_META[winner].name}</strong>.
                     </p>
                   )}
                 </div>
